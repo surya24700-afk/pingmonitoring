@@ -27,7 +27,7 @@ Note: The other libraries (subprocess, logging, etc.) are part of the Python Sta
 
 Setup Instructions
 Clone the Repository
-[git clone https://github.com/yourusername/yourrepository.git](https://github.com/surya24700-afk/pingmonitoring.git)
+[git clone (https://github.com/surya24700-afk/pingmonitoring.git)
 cd yourrepository
 Configure Logging
 Ensure that the LOG_DIR variable points to a valid directory where logs will be saved. The directory should be writable.
