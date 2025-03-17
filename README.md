@@ -14,7 +14,7 @@ subprocess
 logging
 Installation
 Clone the repository:
-git clone https://github.com/yourusername/yourrepository.git
+[git clone https://github.com/yourusername/yourrepository.git](https://github.com/surya24700-afk/pingmonitoring.git)
 cd yourrepository
 Set Up Python Environment:
 It's recommended to use a virtual environment.
