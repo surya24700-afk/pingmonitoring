@@ -1,47 +1,52 @@
+Network Monitoring Script
+This script is designed to continuously monitor network device availability through ICMP pings. When a device is unreachable, it sends alerts to a specified Google Chat space.
+
 Features
-Ping Monitoring: Checks connectivity to a list of IP addresses.
-Email Notifications: Sends email alerts for successful and failed pings.
-Logging: Logs actions and errors for troubleshooting.
+IP Monitoring: Periodically pings a list of IP addresses to verify connectivity.
+Alert System: Sends alerts through Google Chat for initial detection of downtime and periodic updates if downtime persists.
+Logging: Detailed logging of all events and errors for future review.
+Recover Alerts: Notifies when previously downed devices return to normal operation.
 Requirements
 Python 3.x
-Internet access for email sending
+Internet access for sending alerts via Google Chat
 Dependencies
 This script uses the following Python libraries:
 
-smtplib
-email (email.mime.multipart, email.mime.text)
 subprocess
 logging
-Installation
-Clone the repository:
+requests
+json
+time
+datetime
+os
+concurrent.futures (for threading support)
+Install them using:
+
+pip install requests
+Note: The other libraries (subprocess, logging, etc.) are part of the Python Standard Library and don't require additional installation.
+
+Setup Instructions
+Clone the Repository
 [git clone https://github.com/yourusername/yourrepository.git](https://github.com/surya24700-afk/pingmonitoring.git)
 cd yourrepository
-Set Up Python Environment:
-It's recommended to use a virtual environment.
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-Install Dependencies:
-This script uses standard libraries, but if you need any additional libraries, install them using:
-pip install -r requirements.txt
-Configuration
-Email Credentials:
-Update the send_email function to use a secure method for handling the email credentials (e.g., environment variables).
-IP Addresses:
-Update the ip_addresses dictionary in the script to include all IPs you wish to monitor along with their descriptive tags.
-Email Recipients:
-Define email addresses for success_emails, failure_emails, and consolidated_emails to receive ping results.
-Usage
-To run the script, execute:
-
-python network_ping_monitor.py
-Customization
-Platform Compatibility
-The current script uses Windows-specific ping flags. For Unix-like systems, replace -n with -c in the ping_ip function.
-Email Security
-Consider using environmental variables or a secure vault for handling email credentials.
-External Configuration
-To improve usability, configure IP lists and email recipients outside the script, such as in a configuration file (e.g., JSON, YAML).
+Configure Logging
+Ensure that the LOG_DIR variable points to a valid directory where logs will be saved. The directory should be writable.
+IP List Configuration
+Modify the ip_addresses dictionary variable within the script to include the IP addresses and associated tags of the devices you wish to monitor.
+Set Google Chat Webhook URL
+Replace the webhook_url variable in the script with your Google Chat Webhook URL to enable alert messages to be sent to your Google Chat space.
+Running the Script
+Execute the script using Python:
+python network_monitor.py
+Alert System
+Real-time Alerts: Sent when an IP fails to ping successfully 3 consecutive times.
+Periodic Alerts: Sent if the failure condition continues for over an hour beyond initial detection.
+Recovery Alerts: Sent when an IP that was previously unreachable is successfully pingable once more.
 Logging
-Log files are generated with the name email_log.log in the script directory for debugging purposes.
+Logs are maintained in the directory set by LOG_DIR with separate logs for each day of operation.
+
 Contributing
-Contributions are welcome! Please create an issue or submit a pull request with any improvements or bug fixes.
+Contributions are welcomed. Please raise an issue or submit a pull request for any changes or improvements you might have.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
