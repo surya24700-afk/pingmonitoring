@@ -7,7 +7,7 @@ import datetime
 import os
 from concurrent.futures import ThreadPoolExecutor
 
-# Log directory
+# Log directory - Enter your Log Directory
 LOG_DIR = "D:\\Deployed\\NetworkChat Code\\Network-logs"
 
 def setup_logging():
@@ -78,7 +78,7 @@ def main():
         
     }
 
-    webhook_url = "https://chat.googleapis.com/v1/spaces/AAAAvooQHm4/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=xih13VZIPyIfIMNdHLzA-2o4ZukKJ5tsJOFzKxbsoik"
+    webhook_url = "Your Webhok URL"
 
     if not webhook_url:
         logging.error("Google Chat webhook URL is not set.")
